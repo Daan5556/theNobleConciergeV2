@@ -6,11 +6,10 @@ from testcontainers.mongodb import MongoDbContainer
 from src.config.database import get_database
 from src.models.Task import Task
 
-
-class IntegrationTestTask(unittest.TestCase):
+class TestIntegrationTask(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.mongo_container = MongoDbContainer("mongo:7.0.7")
+        cls.mongo_container = MongoDbContainer("mongo")
         cls.mongo_container.start()
         cls.client = cls.mongo_container.get_connection_client()
         cls.db = cls.client.test
